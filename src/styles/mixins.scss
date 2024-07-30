@@ -1,0 +1,22 @@
+@mixin screen($arg: small) {
+	$size: 1024px;
+
+	// Tablet Portrait
+	@if ($arg ==tablet) {
+		$size: 768px;
+	}
+
+	// Standard Desktop
+	@if ($arg ==desktop) {
+		$size: 1280px;
+	}
+
+	// Large Desktop
+	@if ($arg ==large) {
+		$size: 1680px;
+	}
+
+	@media (min-width:#{$size}) {
+		@content;
+	}
+}

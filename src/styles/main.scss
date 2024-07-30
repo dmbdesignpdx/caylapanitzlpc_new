@@ -1,0 +1,224 @@
+@use 'mixins' as m;
+
+
+@font-face {
+	src: url('/fonts/playfair-display-900.woff2') format('woff2');
+	font-family: Playfair;
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+}
+
+@font-face {
+	src: url('/fonts/heebo-400.woff2') format('woff2');
+	font-family: Heebo;
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	src: url('/fonts/heebo-700.woff2') format('woff2');
+	font-family: Heebo;
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+html {
+	font-size: 100%;
+}
+
+body {
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+	touch-action: manipulation;
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: transparent;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	font-family: var(--font-body);
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-level-body);
+	letter-spacing: var(--letter-spacing-body);
+	line-height: var(--line-height-body);
+	color: var(--color-black);
+	background-color: var(--color-white);
+	overflow-wrap: break-word;
+	-webkit-hyphens: none;
+	hyphens: none;
+}
+
+a,
+abbr {
+	text-decoration: none;
+}
+
+a {
+	font-weight: var(--font-weight-bold);
+	color: inherit;
+	white-space: nowrap;
+}
+
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+li {
+	list-style: none;
+}
+
+li::before {
+	content: "\200B";
+}
+
+picture,
+img,
+svg {
+	display: block;
+}
+
+svg {
+	transform-origin: center;
+}
+
+img {
+	inline-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	text-rendering: geometricPrecision;
+}
+
+address {
+	font-style: normal;
+}
+
+:focus {
+	outline: 0;
+}
+
+::-moz-focus-inner {
+	border: 0;
+}
+
+:target {
+	scroll-margin-block-start: 5ex;
+}
+
+p,
+ul,
+h4 {
+	@include m-top(1em);
+}
+
+li {
+	@include m-top(.6em);
+	line-height: 1.4;
+}
+
+p a {
+	color: $teal;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+h2,
+h3 {
+	font-family: Playfair, serif;
+}
+
+
+h2 {
+	font-size: 2rem;
+}
+
+input,
+select,
+button,
+textarea {
+	font: inherit;
+}
+
+
+[data-flow] > * + * {
+	margin-block-start: var(--flow-space, 1em);
+}
+
+
+[data-wrap],
+[data-grid] {
+	inline-size: 100%;
+	padding-inline: var(--gap);
+	margin-inline: auto;
+}
+
+[data-grid] {
+	display: grid;
+	grid: auto / repeat(6, 1fr);
+	column-gap: var(--gap);
+}
+
+[data-grid] > * {
+	grid-column: 1 / -1;
+}
+
+
+[data-frag] {
+	padding-block-start: 4.375rem;
+
+	@include break {
+		padding-block-start: 6.25rem;
+
+		&:not(:first-of-type) {
+			margin-block-start: 6.25rem;
+		}
+	}
+}
+
+@media (min-width:48rem) {
+
+	html {
+		font-size: 125%;
+	}
+
+	:root {
+		--gap: 2rem;
+	}
+
+}
+
+@media (min-width:80rem) {
+
+	[data-wrap],
+	[data-grid] {
+		inline-size: 84vw;
+		max-inline-size: 90rem;
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+}
+
+
+.sr span {
+	width: 1px;
+	height: 1px;
+	position: absolute;
+	overflow: hidden;
+}

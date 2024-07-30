@@ -1,0 +1,54 @@
+---
+interface Props {
+	heading: string;
+	copy: string;
+	image: string;
+}
+
+const {
+	heading,
+	copy,
+	image,
+} = Astro.props;
+---
+
+
+<header data-grid>
+	<h1>{heading} <abbr title="">LPC</abbr></h1>
+	<p><b>(She/Her)</b> {copy}</p>
+	<div>
+		<div id="teal">
+			<svg viewBox='0 0 50 80' aria-hidden='true'><path d='M50,0 50,80 0,60'/>
+		</div>
+		<div id="red">
+			<svg viewBox='0 0 98 95' aria-hidden='true'><path d='M75,0 98,95 0,25'/>
+		</div>
+		<img alt="" src={image} />
+		<div id="yellow">
+			<svg viewBox='0 0 82 98' aria-hidden='true'><path d='M18,0 82,98 0,98'/></svg>
+	</div>
+	</div>
+</header>
+
+
+<style lang="scss">
+	header {
+		contain: strict;
+		block-size: 100vb;
+		align-content: center;
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 8vw;
+	}
+
+	p {
+		grid-column: 3 / 11;
+	}
+
+	img {
+		inline-size: 40%;
+		margin-block-start: 3em;
+	}
+</style>
